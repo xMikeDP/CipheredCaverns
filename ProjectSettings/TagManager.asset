@@ -6,6 +6,16 @@ TagManager:
   tags:
   - Reflector
   - Destination
+  - PuzzleTestCube
+  - PuzzleGreenCube
+  - PuzzleRedCube
+  - PuzzleBlueCube
+  - PuzzleOrangeCube
+  - PickableLog
+  - DepositLogs
+  - FirePlace
+  - Enemy
+  - PlayerCapsule
   layers:
   - Default
   - TransparentFX

@@ -58,6 +58,9 @@ public class LightReflector : MonoBehaviour {
                     // deschidem usa
                     if (destination != null && destination.GetComponent<DoorController>() != null) {
                         destination.GetComponent<DoorController>().OpenDoor();
+                    } else if (destination != null && destination.GetComponent<ObjectShifter>() != null) {
+                        Debug.Log("EQEQEQEQE");
+                        destination.GetComponent<ObjectShifter>().ShiftObject();
                     }
 
                     // schimbam materialul
