@@ -3,13 +3,6 @@ using UnityEngine;
 
 public class Fireball : MonoBehaviour
 {
-    // private void OnTriggEnter(Collision other) {
-    //     Destroy(gameObject);
-    //     if (other.gameObject.CompareTag("Enemy")) {
-    //         Debug.Log("EAEAEA" + other.gameObject.name);
-    //         Destroy(other.gameObject);
-    //     }
-    // }
     private float maxDistance = 100f;
     private Vector3 startPosition;
 
@@ -27,8 +20,10 @@ public class Fireball : MonoBehaviour
         if (!other.CompareTag("Player") && !other.CompareTag("PlayerCapsule")) {
             Destroy(gameObject);
             if (other.CompareTag("Enemy")) {
-                Debug.Log("EAEAEA" + other.gameObject.name);
+                //Debug.Log("EAEAEA" + other.gameObject.name);
                 Destroy(other.gameObject);
+            } else if (other.CompareTag("Boss")) {
+                other.transform.GetComponent<BossStats>().TakeDamage();
             }
         }
     }

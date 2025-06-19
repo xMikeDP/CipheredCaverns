@@ -14,12 +14,6 @@ public class FloorTrigger : MonoBehaviour {
     {
         objectTag = requiredObject.tag;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag(objectTag)) {

@@ -2,9 +2,13 @@ using UnityEngine;
 
 public class SpawnEnemyScript : MonoBehaviour {
     public GameObject enemy;
+    public GameObject parentFolder;
+    
+    private GameObject enemySpawned;
 
     public void SpawnEnemy() {
-        Instantiate(enemy, transform.position, transform.rotation);
-        Debug.Log("SPAWNING ENEMY");
+        enemySpawned = Instantiate(enemy, transform.position, transform.rotation);
+        enemySpawned.transform.parent = parentFolder.transform;
+        //Debug.Log("SPAWNING ENEMY");
     }
 }

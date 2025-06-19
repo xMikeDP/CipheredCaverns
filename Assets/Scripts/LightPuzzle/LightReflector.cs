@@ -53,12 +53,14 @@ public class LightReflector : MonoBehaviour {
                 }
                 // daca este destinatie
                 else if (hit.collider.CompareTag("Destination")) {
-                    Debug.Log("Reached destination - opening door");
+                    //Debug.Log("Reached destination - opening door");
                     
                     // deschidem usa
                     if (destination != null && destination.GetComponent<DoorController>() != null) {
                         destination.GetComponent<DoorController>().OpenDoor();
-                    } else if (destination != null && destination.GetComponent<ObjectShifter>() != null) {
+                    }
+
+                    if (destination != null && destination.GetComponent<ObjectShifter>() != null) {
                         Debug.Log("EQEQEQEQE");
                         destination.GetComponent<ObjectShifter>().ShiftObject();
                     }
@@ -112,7 +114,8 @@ public class LightReflector : MonoBehaviour {
 
     // stergem light ray-ul
     public void CloseRay() {
-        //if (!isOpen) return;
+        // daca reflectorul este inchis, nu mai facem nimic
+        if (!isOpen) return;
 
         isOpen = false;
         lineRenderer.positionCount = 0;

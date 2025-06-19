@@ -16,6 +16,17 @@ TagManager:
   - FirePlace
   - Enemy
   - PlayerCapsule
+  - KillEnemyPuzzle
+  - CombinedFirePlace
+  - Button
+  - WallJumpPuzzle
+  - WallJumpableWall
+  - EnableDashAbility
+  - Boss
+  - BossFight
+  - CombinedFirePlaceBoss
+  - InfoBoard
+  - Secret
   layers:
   - Default
   - TransparentFX

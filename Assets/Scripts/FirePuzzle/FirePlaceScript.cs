@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FirePlaceScript : MonoBehaviour {
     public int timeGoal = 20;
@@ -17,6 +18,9 @@ public class FirePlaceScript : MonoBehaviour {
     public bool gameActive = false;
     private bool gameAlreadyStarted = false;
     
+    public Text timeLeftText;
+    public Text campfireTimeLeftText;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,10 +30,12 @@ public class FirePlaceScript : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (gameActive && gameAlreadyStarted) {
+            UpdateText();
             CheckFireState();
             CheckWinLossCondition();
         } else if (gameActive && !gameAlreadyStarted) {
             gameAlreadyStarted = true;
+            EnableText();
             StartCoroutine(StartTimer());
         }
     }
@@ -69,14 +75,16 @@ public class FirePlaceScript : MonoBehaviour {
 
     private void CheckWinLossCondition() {
         if (timeRemaining == 0) {
+            DisableText();
             Lose();
         } else if (currentTime >= timeGoal) {
+            DisableText();
             Win();
         }
     }
 
     private void Lose() {
-        Debug.Log("Lose");
+        //Debug.Log("Lose");
         gameActive = false;
         gameAlreadyStarted = false;
         currentTime = 0;
@@ -102,22 +110,34 @@ public class FirePlaceScript : MonoBehaviour {
     private IEnumerator ResetPlayerPosition() {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         PlayerController pc = player.gameObject.GetComponent<PlayerController>();
-        if (pc != null) {
-            pc.canMove = false;
-        }
+        pc.canMove = false;
         player.transform.position = resetPosition.transform.position;
         yield return new WaitForSeconds(0.1f);
-        if (pc != null) {
-            pc.canMove = true;
-        }
+        pc.canMove = true;
     }
  
     private void Win() {
-        Debug.Log("Win");
+        //Debug.Log("Win");
         gameActive = false;
         gameAlreadyStarted = false;
         if (GetComponent<DoorController>() != null) {
             GetComponent<DoorController>().OpenDoor();
         }
+    }
+
+    private void UpdateText() {
+        timeLeftText.text = (timeGoal - currentTime).ToString("0") + "s left!";
+        campfireTimeLeftText.text = timeRemaining.ToString("0") + "s left until campfire burns out.";
+    }
+
+    private void EnableText() {
+        UpdateText();
+        timeLeftText.gameObject.SetActive(true);
+        campfireTimeLeftText.gameObject.SetActive(true);
+    }
+
+    private void DisableText() {
+        timeLeftText.gameObject.SetActive(false);
+        campfireTimeLeftText.gameObject.SetActive(false);
     }
 }

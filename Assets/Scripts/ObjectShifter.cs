@@ -43,7 +43,7 @@ public class ObjectShifter : MonoBehaviour
 
     public void UnshiftObject() {
         isActivated = false;
-        objectToShift.transform.position = Vector3.MoveTowards(objectToShift.transform.position, initPos, shiftSpeed * Time.deltaTime);
+        objectToShift.transform.position = Vector3.MoveTowards(objectToShift.transform.position, initPos, shiftSpeed * Time.deltaTime * 100);
         //objectToShift.transform.position = initPos;
     }
 }
