@@ -64,10 +64,9 @@ public class PlayerController : MonoBehaviour
                 currentSpeedX = walkSpeed * Input.GetAxis("Vertical");
                 currentSpeedY = walkSpeed * Input.GetAxis("Horizontal");
             }
-            //float curSpeedX = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Vertical") : 0;
-            //float curSpeedY = canMove ? (isRunning ? runSpeed : walkSpeed) * Input.GetAxis("Horizontal") : 0;
+            
             float movementDirectionY = moveDirection.y;
-            moveDirection = (forward * currentSpeedX) + (right * currentSpeedY);
+            moveDirection = forward * currentSpeedX + right * currentSpeedY;
 
             if (Input.GetButton("Jump") && (characterController.isGrounded || (wallJumpable && canWallJump && Time.time > timer))) {
                 if (wallJumpable) {

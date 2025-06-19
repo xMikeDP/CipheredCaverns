@@ -45,6 +45,9 @@ public class PlayerInterract : MonoBehaviour {
                 secretScript.ActivateSecret();
                 StartCoroutine(secretScript.DisableText());
                 Destroy(hit.collider.gameObject);
+            } else if (hit.collider.CompareTag("Torch")) {
+                InterractiveTorch torchScript = hit.collider.gameObject.GetComponent<InterractiveTorch>();
+                torchScript.ChangeTorchState();
             }
         }
     }

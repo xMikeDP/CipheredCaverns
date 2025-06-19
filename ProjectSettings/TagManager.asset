@@ -27,6 +27,7 @@ TagManager:
   - CombinedFirePlaceBoss
   - InfoBoard
   - Secret
+  - Torch
   layers:
   - Default
   - TransparentFX

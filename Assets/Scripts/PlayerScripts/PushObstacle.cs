@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PushObstacle : MonoBehaviour 
 {
-    private float pushForce;
+    public float pushForce = 1;
 
     private void OnControllerColliderHit(ControllerColliderHit hit) {
         Rigidbody body = hit.collider.attachedRigidbody;
